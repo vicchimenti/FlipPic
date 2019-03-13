@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using ImageMagick;
+using System.Drawing;
+using System.Net.Mime;
 
 namespace FlipPic.Models
 {
