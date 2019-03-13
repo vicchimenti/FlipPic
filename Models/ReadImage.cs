@@ -6,24 +6,24 @@ namespace FlipPic.Models
 {
     public class ReadImages
     {
-        private static MemoryStream LoadMemoryStreamImage()
-        {
-            return new MemoryStream(LoadImageBytes());
-        }
-
-        private static byte[] LoadImageBytes()
-        {
-            return File.ReadAllBytes(SampleFiles.SnakewarePng);
-        }
+//        private static MemoryStream LoadMemoryStreamImage()
+//        {
+//            return new MemoryStream(LoadImageBytes());
+//        }
+//
+//        private static byte[] LoadImageBytes()
+//        {
+//            return File.ReadAllBytes(Images.SnakewareJpg);
+//        }
 
         public static void ReadImage()
         {
             // Read from file.
-            using (MagickImage image = new MagickImage(SampleFiles.SnakewareJpg))
+            using (MagickImage image = new MagickImage(Images.SnakewareJpg))
             {
             }
 
-            // Read from stream.
+/*            // Read from stream.
             using (MemoryStream memStream = LoadMemoryStreamImage())
             {
                 using (MagickImage image = new MagickImage(memStream))
@@ -47,7 +47,7 @@ namespace FlipPic.Models
 
             using (MagickImage image = new MagickImage())
             {
-                image.Read(SampleFiles.SnakewareJpg);
+                image.Read(Images.SnakewareJpg);
                 image.Read(data);
                 image.Read("xc:yellow", settings);
 
@@ -55,15 +55,15 @@ namespace FlipPic.Models
                 {
                     image.Read(memStream);
                 }
-            }
+            }*/
         }
 
         public static void ReadBasicImageInformation()
         {
             // Read from file
-            MagickImageInfo info = new MagickImageInfo(SampleFiles.SnakewarePng);
+            MagickImageInfo info = new MagickImageInfo(Images.SnakewarePng);
 
-            // Read from stream
+/*            // Read from stream
             using (MemoryStream memStream = LoadMemoryStreamImage())
             {
                 info = new MagickImageInfo(memStream);
@@ -74,12 +74,12 @@ namespace FlipPic.Models
             info = new MagickImageInfo(data);
 
             info = new MagickImageInfo();
-            info.Read(SampleFiles.SnakewarePng);
+            info.Read(Images.SnakewarePng);
             using (MemoryStream memStream = LoadMemoryStreamImage())
             {
                 info.Read(memStream);
             }
-            info.Read(data);
+            info.Read(data);*/
 
             Console.WriteLine(info.Width);
             Console.WriteLine(info.Height);
@@ -93,11 +93,11 @@ namespace FlipPic.Models
         public static void ReadImageWithMultipleFrames()
         {
             // Read from file
-            using (MagickImageCollection collection = new MagickImageCollection(SampleFiles.SnakewareJpg))
+            using (MagickImageCollection collection = new MagickImageCollection(Images.SnakewareJpg))
             {
             }
 
-            // Read from stream
+            /*// Read from stream
             using (MemoryStream memStream = LoadMemoryStreamImage())
             {
                 using (MagickImageCollection collection = new MagickImageCollection(memStream))
@@ -115,20 +115,20 @@ namespace FlipPic.Models
             MagickReadSettings settings = new MagickReadSettings();
             settings.Density = new Density(144);
 
-            using (MagickImageCollection collection = new MagickImageCollection(SampleFiles.SnakewarePdf, settings))
+            using (MagickImageCollection collection = new MagickImageCollection(Images.SnakewarePdf, settings))
             {
             }
 
             using (MagickImageCollection collection = new MagickImageCollection())
             {
-                collection.Read(SampleFiles.SnakewareJpg);
+                collection.Read(Images.SnakewareJpg);
                 using (MemoryStream memStream = LoadMemoryStreamImage())
                 {
                     collection.Read(memStream);
                 }
                 collection.Read(data);
-                collection.Read(SampleFiles.SnakewarePdf, settings);
-            }
+                collection.Read(Images.SnakewarePdf, settings);
+            }*/
         }
     }
 }
